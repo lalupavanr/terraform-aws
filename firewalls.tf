@@ -32,3 +32,21 @@ resource "aws_network_acl_rule" "lms-outbound-nacl-rule" {
   to_port        = 65535
 
 }
+
+# Nacl - subnet - association
+resource "aws_network_acl_association" "lms-subnet" {
+  network_acl_id = aws_network_acl.lms-nacls.id
+  subnet_id      = aws_subnet.lms-subnet1.id
+
+}
+
+# Security Group
+resource "aws_security_group" "lms-web-sg" {
+  name        = "allow ssh-http"
+  description = "allow ssh & http traffic"
+  vpc_id      = aws_vpc.lms1.id
+  tags = {
+    "Name" = "lms-web-sg"
+  }
+
+}
