@@ -18,3 +18,12 @@ resource "aws_subnet" "lms-subnet1" {
     Name = "lms-subnet1"
   }
 }
+
+# Internet Gateway
+resource "aws_internet_gateway" "lms-igw" {
+  vpc_id = aws_vpc.lms1.id
+
+  tags = {
+    Name = "lms-igw"
+  }
+}
