@@ -44,3 +44,10 @@ resource "aws_route" "lms-igw-route" {
   gateway_id             = aws_internet_gateway.lms-igw.id
 
 }
+
+# Route table subnet association
+resource "aws_route_table_association" "lms-rta" {
+  subnet_id      = aws_subnet.lms-subnet1.id
+  route_table_id = aws_route_table.lms-rt.id
+
+}
