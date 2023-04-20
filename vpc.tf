@@ -9,12 +9,12 @@ resource "aws_vpc" "lms1" {
 }
 
 # Subnet
-resource "aws_subnet" "lms-Subnet1" {
+resource "aws_subnet" "lms-subnet1" {
   vpc_id                  = aws_vpc.lms1.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = "true"
 
   tags = {
-    Name = "lms-Subnet1"
+    Name = "lms-subnet1"
   }
 }
